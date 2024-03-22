@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
-import { Header } from "./components/index";
+import { Header, Products } from "./components/index";
 
 function App() {
   return (
@@ -7,6 +7,9 @@ function App() {
       <div className=" relative z-0">
         <div>
           <Header />
+        </div>
+        <div>
+          <Products />
         </div>
       </div>
     </BrowserRouter>
