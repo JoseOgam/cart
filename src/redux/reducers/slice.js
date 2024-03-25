@@ -34,6 +34,16 @@ const productSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.products = true;
         state.products = action.payload;
+
+        //retreve existing items products from localaStorage
+        const existingProducts =
+          JSON.parse(localStorage.getItem("products")) || [];
+
+        //merge existing products with new products
+        const updatedProducts = [...existingProducts, ...action.payload];
+
+        // Store fetched data in localStorage
+        localStorage.setItem("products", JSON.stringify(updatedProducts));
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = false;
