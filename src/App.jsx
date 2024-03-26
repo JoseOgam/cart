@@ -1,5 +1,5 @@
-import { BrowserRouter } from "react-router-dom";
-import { Header, Products } from "./components/index";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Cart, Header, Products } from "./components/index";
 
 function App() {
   return (
@@ -9,7 +9,10 @@ function App() {
           <Header />
         </div>
         <div>
-          <Products />
+          <Routes>
+            <Route path="/" element={<Products />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
         </div>
       </div>
     </BrowserRouter>

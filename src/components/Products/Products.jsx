@@ -5,7 +5,8 @@ import useLocalStorage from "use-local-storage-state";
 
 const Products = () => {
   const { products, setProducts } = useSelector((state) => state.products);
-  const [cart, setCart] = useState("cart", {});
+  const [isLoading, setIsLoading] = useState(false);
+  const [cart, setCart] = useLocalStorage("cart", {});
   console.log(products);
 
   const dispatch = useDispatch();
@@ -31,16 +32,19 @@ const Products = () => {
   return (
     <div>
       <h1 className="flex  justify-center font-bold">Products</h1>
-      <div>
-        <div className="flex flex-col overflow-x-hidden gap-10">
-          <div className="grid grid-cols-3 h-screen items-center justify-center">
+      <div className="flex justify-center w-full px-10">
+        <div className="flex flex-col overflow-x-hidden ">
+          <div className="grid grid-cols-3 h-screen items-center justify-center gap-10">
             {products.map((product) => (
-              <div key={product.id}>
-                <img src={product.thumbnail} className=" w-20 h-20" />
+              <div
+                key={product.id}
+                className=" flex-col justify-center items-center"
+              >
+                <img src={product.thumbnail} className=" w-100 h-80" />
                 <div> {product.title} </div>
                 <p>Price:{product.price}</p>
                 <button
-                  disabled={!!cart[product.id]}
+                  disabled={!cart[product.id]}
                   onClick={() => addToCart(product)}
                   className=" bg-orange-400 text-black rounded items-center justify-center py-2 px-2"
                 >
