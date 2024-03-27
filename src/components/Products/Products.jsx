@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../redux/reducers/slice";
-import useLocalStorage from "use-local-storage-state";
+
+import useLocalStorageState from "use-local-storage-state";
 
 const Products = () => {
   const { products, setProducts } = useSelector((state) => state.products);
   const [isLoading, setIsLoading] = useState(false);
-  const [cart, setCart] = useLocalStorage("cart", {});
-  console.log(products);
+  const [cart, setCart] = useLocalStorageState("cart", {});
 
   const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ const Products = () => {
         updatedCart[product.id].quantity++;
         console.log("hureey");
       } else {
-        updatedCart[product.id] = { ...product, quantity: 1 };
+        updatedCart[product.id] = { ...product, quantity: 0 };
       }
       setCart(updatedCart);
     } catch (error) {
@@ -44,7 +44,7 @@ const Products = () => {
                 <div> {product.title} </div>
                 <p>Price:{product.price}</p>
                 <button
-                  disabled={!cart[product.id]}
+                  // disabled={!!cart[product.id]}
                   onClick={() => addToCart(product)}
                   className=" bg-orange-400 text-black rounded items-center justify-center py-2 px-2"
                 >
