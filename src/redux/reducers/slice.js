@@ -32,7 +32,7 @@ const productSlice = createSlice({
         state.status = false;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.products = true;
+        state.status = true;
         state.products = action.payload;
 
         //retreve existing items products from localaStorage
@@ -47,6 +47,7 @@ const productSlice = createSlice({
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = false;
+        state.error = action.error.message;
       });
   },
 });
