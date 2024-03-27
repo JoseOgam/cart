@@ -7,7 +7,7 @@ import { Operation } from "../Quantifier/Quantifier";
 const Cart = () => {
   const [cart, setCart] = useLocalStorageState("cart", {});
   const location = useLocation();
-  console.log(cart);
+  // console.log(cart);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -51,28 +51,34 @@ const Cart = () => {
   };
   const getProducts = () => Object.values(cart || {});
 
+  const totalPrice = getProducts().reduce(
+    (accumulator, product) => accumulator + product.price * product.quantity,
+    0
+  );
+
   return (
     <div>
       <div className="flex-col px-10 ">
         {getProducts().map((product) => (
-          <div
-            key={product.id}
-            className="flex w-full items-center justify-between"
-          >
-            <div className=" pt-5 pb-5">
-              <img
-                src={product.thumbnail}
-                alt={product.title}
-                width={80}
-                height={80}
+          <div key={product.id}>
+            <div className="flex w-full items-center justify-between">
+              <div className=" pt-5 pb-5">
+                <img
+                  src={product.thumbnail}
+                  alt={product.title}
+                  width={80}
+                  height={80}
+                />
+                <h3>{product.title}</h3>
+              </div>
+              <Quantifier
+                removeProductCallback={handleRemoveProduct}
+                handleUpdateQuantity={handleUpdateQuantity}
+                productId={product.id}
               />
-              <h3>{product.title}</h3>
+              <h1> Total Price {totalPrice} </h1>
             </div>
-            <Quantifier
-              removeProductCallback={handleRemoveProduct}
-              handleUpdateQuantity={handleUpdateQuantity}
-              productId={product.id}
-            />
+            <div></div>
           </div>
         ))}
       </div>
