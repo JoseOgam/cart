@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { logo } from "../../assets";
 import CarWidget from "../CartWidget/CarWidget";
+import { navLinks } from "../../constants/constants";
 
 const Header = () => {
   return (
@@ -18,7 +19,13 @@ const Header = () => {
             />
           </Link>
 
-          <ul>
+          <ul className="list-none hidden sm:flex flex-row gap-14 mt-2 justify-center items-center">
+            {navLinks.map((nav) => (
+              <li key={nav.id} className="">
+                <a href={`#${nav.id}`}> {nav.title} </a>
+              </li>
+            ))}
+
             <CarWidget />
           </ul>
         </div>
