@@ -16,9 +16,8 @@ const Products = () => {
       const updatedCart = { ...cart };
       if (updatedCart[product.id]) {
         updatedCart[product.id].quantity++;
-        console.log("hureey");
       } else {
-        updatedCart[product.id] = { ...product, quantity: 0 };
+        updatedCart[product.id] = { ...product, quantity: 1 };
       }
       setCart(updatedCart);
     } catch (error) {

@@ -76,11 +76,12 @@ const Cart = () => {
                 handleUpdateQuantity={handleUpdateQuantity}
                 productId={product.id}
               />
-              <h1> Total Price {totalPrice} </h1>
             </div>
-            <div></div>
           </div>
         ))}
+        <div className="flex items-center justify-center">
+          <h1> Total Price {totalPrice} </h1>
+        </div>
       </div>
     </div>
   );

@@ -1,13 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { shoppingCart } from "../../assets";
+import useLocalStorageState from "use-local-storage-state";
 
-const CarWidget = ({ productCount }) => {
+const CarWidget = () => {
+  const { cart } = useLocalStorageState("cart", {});
   const navigate = useNavigate();
 
   const navigateToCart = () => {
     navigate("/cart");
   };
+
+  const productIncart = () => Object.values(cart || {});
+  const productCount = productIncart();
+  console.log(productCount);
   return (
     <div>
       <div>
@@ -22,7 +28,7 @@ const CarWidget = ({ productCount }) => {
             height={100}
           />
           <span className=" z-auto text-orange-500 font-bold">
-            {productCount} 1{" "}
+            {/* {productCount} */}
           </span>
         </button>
       </div>
