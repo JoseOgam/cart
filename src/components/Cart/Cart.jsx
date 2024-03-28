@@ -57,7 +57,7 @@ const Cart = () => {
   );
 
   return (
-    <div>
+    <div className="flex pt-32 pb-28">
       <div className="flex-col px-10 ">
         {getProducts().map((product) => (
           <div key={product.id}>
