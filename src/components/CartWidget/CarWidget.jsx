@@ -1,11 +1,16 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { shoppingCart } from "../../assets";
 import useLocalStorageState from "use-local-storage-state";
 
 const CarWidget = () => {
   const { cart } = useLocalStorageState("cart", {});
+  const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   const navigateToCart = () => {
     navigate("/cart");
@@ -26,9 +31,10 @@ const CarWidget = () => {
             alt="shopping cart"
             width={100}
             height={100}
+            className=" bg-orange-100"
           />
           <span className=" z-auto text-orange-500 font-bold">
-            {/* {productCount} */}
+            {productCount}
           </span>
         </button>
       </div>
