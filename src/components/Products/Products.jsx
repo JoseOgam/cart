@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../redux/reducers/slice";
 
 import useLocalStorageState from "use-local-storage-state";
+import { SectionWrapper } from "../../hoc";
 
 const Products = () => {
   const { products, setProducts } = useSelector((state) => state.products);
@@ -57,4 +58,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default SectionWrapper(Products, "home");
