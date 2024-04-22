@@ -30,10 +30,10 @@ const Products = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
   return (
-    <div className="flex pt-28">
+    <div className="flex pt-28 pb-28">
       <div className="flex justify-center w-full px-10">
         <div className="flex flex-col overflow-x-hidden ">
-          <div className="grid grid-cols-3 h-screen items-center justify-center gap-10">
+          <div className="grid md:grid-cols-3 md:items-center md:justify-center h-screen items-center justify-center gap-10">
             {products.map((product) => (
               <div
                 key={product.id}
