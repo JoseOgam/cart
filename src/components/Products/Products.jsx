@@ -72,7 +72,7 @@ const Products = () => {
                   className="bg-black text-white w-[100px] h-[35px] rounded-[50px] flex justify-center items-center mt-6"
                   onClick={() => window.location.reload()}
                 >
-                  Go Back
+                  Go Back.
                 </button>
               </div>
             )}
